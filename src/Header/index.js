@@ -3,7 +3,10 @@ import React from 'react'
 const Header= () => {
     return(
         <header>
-        <input type= "text" placeholder= "add ToDoList" />    
+        <form>
+        <input type= "text" placeholder= "add todo" name= "text"/>  
+        <button>Add todo</button>
+        </form> 
         </header>
     )
 }

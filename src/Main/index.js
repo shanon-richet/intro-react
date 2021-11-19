@@ -1,20 +1,20 @@
 import React from 'react'
 
-const Main= () => {
+const toDoList= () => {
     return(
-        <main>
+    <main>
         <ul>
         <li>
-        <input type="checkbox" /> My first todo
+        <input type="checkbox" /> Learn javascript
         </li>
         <li>
-        <input type="checkbox" /> My first todo
+        <input type="checkbox" /> Learn React
         </li>
         </ul>
-        </main>
+    </main>
     )
 }
 
-export default Main
+export default toDoList
 
   

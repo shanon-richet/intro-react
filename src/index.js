@@ -12,15 +12,3 @@ ReactDOM.render(
 );
 reportWebVitals();
 
-export default function addToDo() {
-  return (
-    <ul>
-      <li>
-      <input type="checkbox" /> My first todo
-      </li>
-      <li>
-      <input type="checkbox" /> My first todo
-      </li>
-    </ul>
-  )
-}
