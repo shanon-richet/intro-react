@@ -24,14 +24,7 @@ function App() {
       }]
     })
     console.log(todos)
-
   }
-
-  useEffect(() => {
-    // storing input name
-    localStorage.setItem("name", JSON.stringify(todos));
-  }, [todos]);
-
   return (
     <>
       <h1>TodoList</h1>
