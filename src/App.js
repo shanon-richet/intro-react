@@ -1,23 +1,39 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './App.css';
-import TodoList from './TodoList';
 
 function App() {
-  const initial = ['Eat', 'Sleep']
-  const [todos, setTodos] = useState(initial)
-
+  const initial = [{
+    "task": "Eat",
+    "complete": false
+  }, {
+    "task": "Sleep",
+    "complete": true
+  }]
+  const [todos, setTodos] = React.useState(initial)
   const inputRef = useRef();
 
   function clickHandler(e) {
     e.preventDefault()
-    setTodos([...initial, inputRef.current.value])
+    setTodos(previous => {
+      return [...previous, {
+        "task": inputRef.current.value,
+        "complete": false
+      }]
+    })
     console.log(todos)
+    localStorage.setItem('todos', JSON.stringify(todos))
   }
 
-  useEffect(() => {
-    // storing input name
-    localStorage.setItem("name", JSON.stringify(todos));
-  }, [todos]);
+  React.useEffect(() => {
+    const stored = localStorage.getItem('todos')
+    if (stored) {
+      setTodos(JSON.parse(stored))
+    }
+  }, [])
+
+  React.useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos))
+  })
 
   return (
     <>
@@ -26,18 +42,17 @@ function App() {
         <input ref={inputRef} placeholder="write todo" type="text" />
         <button onClick={(e) => (clickHandler(e))} >add</button>
       </form>
-      <TodoList />
       <div>
         <ul>
           {
             todos.map((todo, index) => (
               <li>
-                <input key={index} type="checkbox" /> {todo}
+                <input key={index} type="checkbox" defaultChecked={todo.complete} /> {todo.task}
               </li>
             ))}
         </ul>
       </div>
     </>
-  );
+  )
 }
 export default App;
