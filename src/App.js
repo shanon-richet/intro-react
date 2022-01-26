@@ -10,7 +10,9 @@ function App() {
     "complete": true
   }]
   const [todos, setTodos] = React.useState(initial)
-  const inputRef = useRef();
+  const inputRef = useRef()
+  const todoRef = useRef()
+  const todoInput = useRef()
 
   function clickHandler(e) {
     e.preventDefault()
@@ -37,21 +39,24 @@ function App() {
 
   return (
     <>
-      <h1>TodoList</h1>
-      <form>
-        <input ref={inputRef} placeholder="write todo" type="text" />
-        <button onClick={(e) => (clickHandler(e))} >add</button>
-      </form>
-      <div>
-        <ul>
-          {
-            todos.map((todo, index) => (
-              <li>
-                <input key={index} type="checkbox" defaultChecked={todo.complete} /> {todo.task}
-              </li>
-            ))}
-        </ul>
-      </div>
+      <main>
+        <h1>TodoList</h1>
+        <form>
+          <input ref={inputRef} placeholder="write todo" type="text" />
+          <button onClick={(e) => (clickHandler(e))} >add</button>
+        </form>
+        <div className='todos'>
+          <ul>
+            {
+              todos.map((todo, index) => (
+                <li ref={todoRef}>
+                  <button onClick={(e) => removeTodo(e)}>X</button>
+                  <input ref={todoInput} key={index} type="checkbox" defaultChecked={todo.complete} /> {todo.task}
+                </li>
+              ))}
+          </ul>
+        </div>
+      </main>
     </>
   )
 }
