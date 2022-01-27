@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useRef } from 'react';
 import './App.css';
 
 function App() {
@@ -10,8 +10,8 @@ function App() {
     "complete": true
   }]
   const [todos, setTodos] = React.useState(initial)
-  const inputRef = useRef()
-  const todoInput = useRef()
+
+  const inputRef = useRef();
 
   function clickHandler(e) {
     e.preventDefault()
@@ -21,7 +21,7 @@ function App() {
         "complete": false
       }]
     })
-    console.log(todos)
+    localStorage.setItem('todos', JSON.stringify(todos))
   }
 
   React.useEffect(() => {
@@ -43,6 +43,7 @@ function App() {
     localStorage.setItem('todos', JSON.stringify(filtered))
     console.log(filtered)
   }
+
   return (
     <>
       <main>
@@ -53,15 +54,15 @@ function App() {
         </form>
         <div className='todos'>
           <ul>
-            {
-              todos.map((todo, index) => (
-                <li>
-                  <button class="trash" onClick={(e) => (removeTodo(todo, e))}>X</button>
-                  <input value={todos} ref={todoInput} key={index} type="checkbox" defaultChecked={todo.complete} class="todo" /> {todo.task}
-                </li>
-              ))}
+            {todos.map(todo => (
+              <li>
+                <button class="trash" onClick={(e) => (removeTodo(todo, e))}>X</button>
+                <input value={todos} type="checkbox" defaultChecked={todo.complete} class="todo" /> {todo.task}
+              </li>
+            ))}
           </ul>
         </div>
+
       </main>
     </>
   )
