@@ -2,21 +2,38 @@ body {
  background-image: url('http://www.wallfizz.com/espace/etoiles/799-etoiles-WallFizz.jpg');
   color: white;
 }
+main {
+  background-color: #222524;
+  opacity: 0.9;
+  width: 800px;
+  margin-left: 20%;
+}
 h1 {
   text-align: center;
 }
 .todos {
   font-size: 30px;
 }
+.todoInput {
+  margin-left: 35%;
+}
 
 li, input, button, h1 {
   background-color: #0a100e;
   color: white;
-  opacity: 0.7;
+  opacity: 0.9;
   list-style: none;
   margin-top: 20px;
 }
-input {
-    margin-left: 30px;
+li {
+   margin-right: 20px;
+    height: 50px;
 }
-
+.todo {
+margin-left: 30px;
+}
+.trash {
+  float: right;
+  margin-right: 30px;
+  font-size: 15px;
+}

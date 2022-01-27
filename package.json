@@ -6,15 +6,10 @@
     "@testing-library/jest-dom": "^5.15.0",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
-<<<<<<< HEAD
     "local-storage": "^2.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-native": "^0.67.1",
-=======
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
->>>>>>> 0e4670b0d6cac2c1d583754f875fb0ec634fcfc7
     "react-scripts": "4.0.3",
     "web-vitals": "^1.1.2"
   },
@@ -41,5 +36,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^3.2.3"
   }
 }

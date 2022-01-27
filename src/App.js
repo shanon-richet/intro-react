@@ -11,7 +11,6 @@ function App() {
   }]
   const [todos, setTodos] = React.useState(initial)
   const inputRef = useRef()
-  const todoRef = useRef()
   const todoInput = useRef()
 
   function clickHandler(e) {
@@ -23,7 +22,6 @@ function App() {
       }]
     })
     console.log(todos)
-    localStorage.setItem('todos', JSON.stringify(todos))
   }
 
   React.useEffect(() => {
@@ -37,21 +35,29 @@ function App() {
     localStorage.setItem('todos', JSON.stringify(todos))
   })
 
+  const removeTodo = (todo, e) => {
+    e.target.parentNode.remove()
+    const ls = JSON.parse(localStorage.getItem('todos'))
+    const filtered = ls.filter(element => element.task !== todo.task)
+    localStorage.removeItem('todos')
+    localStorage.setItem('todos', JSON.stringify(filtered))
+    console.log(filtered)
+  }
   return (
     <>
       <main>
         <h1>TodoList</h1>
         <form>
-          <input ref={inputRef} placeholder="write todo" type="text" />
+          <input ref={inputRef} placeholder="write todo" type="text" class="todoInput" />
           <button onClick={(e) => (clickHandler(e))} >add</button>
         </form>
         <div className='todos'>
           <ul>
             {
               todos.map((todo, index) => (
-                <li ref={todoRef}>
-                  <button onClick={(e) => removeTodo(e)}>X</button>
-                  <input ref={todoInput} key={index} type="checkbox" defaultChecked={todo.complete} /> {todo.task}
+                <li>
+                  <button class="trash" onClick={(e) => (removeTodo(todo, e))}>X</button>
+                  <input value={todos} ref={todoInput} key={index} type="checkbox" defaultChecked={todo.complete} class="todo" /> {todo.task}
                 </li>
               ))}
           </ul>
