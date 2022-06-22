@@ -3,7 +3,7 @@ import './App.css';
 
 function App() {
   const initial = [{
-    "task": "Eat",
+    "task": "Code",
     "complete": false
   }, {
     "task": "Sleep",
