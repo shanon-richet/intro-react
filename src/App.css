@@ -5,19 +5,27 @@ body {
 main {
   background-color: #222524;
   opacity: 0.9;
-  width: 800px;
+  width: 50%;
   margin-left: 20%;
+  margin-left: auto;
+  margin-right: auto;
 }
 h1 {
   text-align: center;
 }
 .todos {
-  font-size: 30px;
+  font-size: 2.7em;
+}
+form {
+  display: flex;
+  justify-content: center;
+}
+form > * {
+  font-size: 3em;
 }
 .todoInput {
-  margin-left: 35%;
+  width: 50%;
 }
-
 li, input, button, h1 {
   background-color: #0a100e;
   color: white;
@@ -26,18 +34,20 @@ li, input, button, h1 {
   margin-top: 20px;
 }
 li {
-   margin-right: 20px;
-    height: 50px;
+  margin-right: 20px;
+  padding-block: 2%;
 }
 .todo {
-margin-left: 30px;
+  margin-left: 30px;
 }
 .trash {
   float: right;
   margin-right: 30px;
-  font-size: 15px;
+  font-size: 50px;
 }
 input {
     margin-left: 30px;
 }
+
+
 
